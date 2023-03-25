@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-import { getFirestore } from "firebase/firestore";
 
-export interface Tshirt {
+export interface Top {
   color: string;
   jeans: string[];
   joggers?: string[];
@@ -11,14 +12,19 @@ export interface Tshirt {
   shorts?: string[];
 }
 
+export interface Bottom {
+  color: string; 
+  tshirts: string[]; 
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ClothesService {
-  private shirt: Tshirt | undefined;
-  public shirt$: BehaviorSubject<Tshirt> = new BehaviorSubject<Tshirt>({color: "", jeans: []});
 
-  constructor() { 
-    
+  constructor(private db: AngularFirestore) { 
+
   }
+
+  
 }
