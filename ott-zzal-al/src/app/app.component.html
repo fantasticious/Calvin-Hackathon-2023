@@ -1,5 +1,6 @@
-<h1>Ott-Zzal-Al</h1>
-
+<div class="header">
+  <h1>Ott-Zzal-Al</h1>
+</div>
 <div class="grid-container">
   <div class="left-container">
     <div #tops>
@@ -11,7 +12,9 @@
         <button class="apparel" (click)="getTopColors('Hoodies')">
           Hoodies
         </button>
-        <button class="apparel">(Placeholder)</button>
+        <button class="apparel" (click)="getTopColors('knitwear')">
+          Knitwear
+        </button>
       </div>
       <div class="color-buttons" *ngIf="topColors.length !== 0">
         <button
@@ -36,44 +39,84 @@
           {{ bottomType }}
         </button>
       </div>
-      <!-- <div class="color-buttons" *ngIf="bottomColors.length !== 0">
-        <button
-          class="colorButton"
-          *ngFor="let color of bottomColors"
-          [ngStyle]="{ 'background-color': color }"
-        ></button>
-      </div> -->
     </div>
   </div>
   <div class="right-container">
     <h3>COLOR COMBINATIONS:</h3>
-    <div *ngIf="bottomColorScheme.length === 0" [ngStyle]="{'color': '#ffffff'}">
-        pick a combo to get started
+    <h4 class="color-combo" *ngIf="bottomColorScheme.length !== 0">
+      {{ top }}
+    </h4>
+    <div
+      *ngIf="bottomColorScheme.length === 0"
+      [ngStyle]="{ color: '#ffffff' }"
+    >
+      pick a combo to get started
     </div>
     <div class="grid-container-right" *ngIf="bottomColorScheme.length !== 0">
       <div class="color1">
-        <div class="top1" [ngStyle]="{ 'background-color': chosenTopColor }" ></div>
-        <div class="bottom1" [ngStyle]="{ 'background-color': rand6BottomColorScheme[0] }" ></div>
+        <div
+          class="top1"
+          [ngStyle]="{ 'background-color': chosenTopColor }"
+        ></div>
+        <div
+          class="bottom1"
+          [ngStyle]="{ 'background-color': rand6BottomColorScheme[0] }"
+        ></div>
       </div>
       <div class="color2">
-        <div class="top2" [ngStyle]="{ 'background-color': chosenTopColor }"></div>
-        <div class="bottom2" [ngStyle]="{ 'background-color': rand6BottomColorScheme[1] }"></div>
+        <div
+          class="top2"
+          [ngStyle]="{ 'background-color': chosenTopColor }"
+        ></div>
+        <div
+          class="bottom2"
+          [ngStyle]="{ 'background-color': rand6BottomColorScheme[1] }"
+        ></div>
       </div>
       <div class="color3">
-        <div class="top3" [ngStyle]="{ 'background-color': chosenTopColor }"></div>
-        <div class="bottom3" [ngStyle]="{ 'background-color': rand6BottomColorScheme[2] }"></div>
+        <div
+          class="top3"
+          [ngStyle]="{ 'background-color': chosenTopColor }"
+        ></div>
+        <div
+          class="bottom3"
+          [ngStyle]="{ 'background-color': rand6BottomColorScheme[2] }"
+        ></div>
       </div>
       <div class="color4">
-        <div class="top4" [ngStyle]="{ 'background-color': chosenTopColor }"></div>
-        <div class="bottom4" [ngStyle]="{ 'background-color': rand6BottomColorScheme[3] }"></div>
+        <div
+          class="top4"
+          [ngStyle]="{ 'background-color': chosenTopColor }"
+        ></div>
+        <div
+          class="bottom4"
+          [ngStyle]="{ 'background-color': rand6BottomColorScheme[3] }"
+        ></div>
       </div>
       <div class="color5">
-        <div class="top5" [ngStyle]="{ 'background-color': chosenTopColor }"></div>
-        <div class="bottom5" [ngStyle]="{ 'background-color': rand6BottomColorScheme[4] }"></div>
+        <div
+          class="top5"
+          [ngStyle]="{ 'background-color': chosenTopColor }"
+        ></div>
+        <div
+          class="bottom5"
+          [ngStyle]="{ 'background-color': rand6BottomColorScheme[4] }"
+        ></div>
       </div>
       <div class="color6">
-        <div class="top6" [ngStyle]="{ 'background-color': chosenTopColor }"></div>
-        <div class="bottom6" [ngStyle]="{ 'background-color': rand6BottomColorScheme[5] }"></div>
+        <div
+          class="top6"
+          [ngStyle]="{ 'background-color': chosenTopColor }"
+        ></div>
+        <div
+          class="bottom6"
+          [ngStyle]="{ 'background-color': rand6BottomColorScheme[5] }"
+        ></div>
+      </div>
+      <div class="regen">
+        <button class="regen-button" (click)="regenerateCombo()">
+          Regenerate with different bottom combos
+        </button>
       </div>
     </div>
   </div>
