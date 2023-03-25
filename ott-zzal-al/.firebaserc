@@ -2,7 +2,7 @@
   "targets": {
     "ott-zzal-al": {
       "hosting": {
-        "ott-zzal-al": [
+        "teamApp": [
           "ott-zzal-al"
         ]
       }
