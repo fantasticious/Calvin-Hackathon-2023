@@ -11,13 +11,6 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  // states
-  newMember = '';
-  memberArray: string[] = [];
-  errorMsg = '';
-  numberOfTeams: number | '' = '';
-  teams: string[][] = []; // array of array of strings
-
   top: Top | unknown;
   topColors: string[] = [];
   bottom: Bottom | unknown;
