@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ott-zzal-al": {
+      "hosting": {
+        "ott-zzal-al": [
+          "ott-zzal-al"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ott-zzal-al"
+  }
+}
