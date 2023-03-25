@@ -2,37 +2,79 @@
 
 <div class="grid-container">
   <div class="left-container">
-    <h2>TOPS:</h2>
-    <div class="apparel-buttons">
-      <button class="apparel" (click)="getTopColors('tshirts')">
-        T-Shirts
-      </button>
-      <button class="apparel" (click)="getTopColors('Hoodies')">Hoodies</button>
-      <button class="apparel">(Placeholder)</button>
-    </div>
-    <div class="color-buttons" *ngIf="topColors.length !== 0">
-      <button
-        class="colorButton"
-        *ngFor="let color of topColors"
-        [ngStyle]="{ 'background-color': color }"
-      ></button>
+    <div #tops>
+      <h2>TOPS:</h2>
+      <div class="apparel-buttons">
+        <button class="apparel" (click)="getTopColors('tshirts')">
+          T-Shirts
+        </button>
+        <button class="apparel" (click)="getTopColors('Hoodies')">
+          Hoodies
+        </button>
+        <button class="apparel">(Placeholder)</button>
+      </div>
+      <div class="color-buttons" *ngIf="topColors.length !== 0">
+        <button
+          class="colorButton"
+          *ngFor="let color of topColors"
+          [ngStyle]="{ 'background-color': color }"
+          (click)="onChooseTopColor(color)"
+        >
+          {{ color }}
+        </button>
+      </div>
     </div>
 
-    <h2>BOTTOMS:</h2>
-    <div class="apparel-buttons">
-      <button class="apparel" (click)="getBottomColors('jeans')">Jeans</button>
-      <button class="apparel">Joggers</button>
-      <button class="apparel">Leggings</button>
-      <button class="apparel">Shorts</button>
-    </div>
-    <div class="color-buttons" *ngIf="bottomColors.length !== 0">
-      <button
-        class="colorButton"
-        *ngFor="let color of bottomColors"
-        [ngStyle]="{ 'background-color': color }"
-      ></button>
+    <div #bottoms *ngIf="possibleBottomsAvailable">
+      <h2>BOTTOMS:</h2>
+      <div class="apparel-buttons">
+        <button
+          class="apparel"
+          *ngFor="let bottomType of possibleBottomTypes"
+          (click)="onChooseBottomType(bottomType)"
+        >
+          {{ bottomType }}
+        </button>
+      </div>
+      <!-- <div class="color-buttons" *ngIf="bottomColors.length !== 0">
+        <button
+          class="colorButton"
+          *ngFor="let color of bottomColors"
+          [ngStyle]="{ 'background-color': color }"
+        ></button>
+      </div> -->
     </div>
   </div>
-
-  <div class="right-container"></div>
+  <div class="right-container">
+    <h3>COLOR COMBINATIONS:</h3>
+    <div *ngIf="bottomColorScheme.length === 0" [ngStyle]="{'color': '#ffffff'}">
+        pick a combo to get started
+    </div>
+    <div class="grid-container-right" *ngIf="bottomColorScheme.length !== 0">
+      <div class="color1">
+        <div class="top1" [ngStyle]="{ 'background-color': chosenTopColor }" ></div>
+        <div class="bottom1" [ngStyle]="{ 'background-color': rand6BottomColorScheme[0] }" ></div>
+      </div>
+      <div class="color2">
+        <div class="top2" [ngStyle]="{ 'background-color': chosenTopColor }"></div>
+        <div class="bottom2" [ngStyle]="{ 'background-color': rand6BottomColorScheme[1] }"></div>
+      </div>
+      <div class="color3">
+        <div class="top3" [ngStyle]="{ 'background-color': chosenTopColor }"></div>
+        <div class="bottom3" [ngStyle]="{ 'background-color': rand6BottomColorScheme[2] }"></div>
+      </div>
+      <div class="color4">
+        <div class="top4" [ngStyle]="{ 'background-color': chosenTopColor }"></div>
+        <div class="bottom4" [ngStyle]="{ 'background-color': rand6BottomColorScheme[3] }"></div>
+      </div>
+      <div class="color5">
+        <div class="top5" [ngStyle]="{ 'background-color': chosenTopColor }"></div>
+        <div class="bottom5" [ngStyle]="{ 'background-color': rand6BottomColorScheme[4] }"></div>
+      </div>
+      <div class="color6">
+        <div class="top6" [ngStyle]="{ 'background-color': chosenTopColor }"></div>
+        <div class="bottom6" [ngStyle]="{ 'background-color': rand6BottomColorScheme[5] }"></div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,3 +1,5 @@
+
+
 .container {
   padding: 4rem;
   width: 40rem;
@@ -7,24 +9,157 @@
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  height: 100%;
 
+}
+
+.grid-container-right {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  grid-template-areas:
+    "color1 color2 color3"
+    "color4 color5 color6";
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 200px 200px;
+  }
+
+.color1 {
+  grid-area: color1;
+  color: white;
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: repeat(1, 2fr);
+  grid-template-areas:
+    "top1"
+    "bottom1";
+}
+
+.top1 {
+  padding: 20px;
+}
+
+.bottom1 {
+  background-color: blue;
+  padding: 20px;
+}
+
+.color2 {
+  grid-area: color2;
+  color: white;
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: repeat(1, 2fr);
+  grid-template-areas:
+  "top2"
+  "bottom2";
+}
+
+.top2 {
+  background-color: red;
+  padding: 20px;
+}
+
+.bottom2 {
+  background-color: violet;
+  padding: 20px;
+}
+
+.color3 {
+  grid-area: color3;
+  color: white;
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: repeat(1, 2fr);
+  grid-template-areas:
+  "top3"
+  "bottom3";
+}
+
+.top3 {
+  background-color: pink;
+  padding: 20px;
+}
+
+.bottom3 {
+  background-color: blue;
+  padding: 20px;
+
+}
+.color4 {
+  grid-area: color4;
+  color: white;
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: repeat(1, 2fr);
+  grid-template-areas:
+  "top4"
+  "bottom4";
+}
+
+.top4 {
+  background-color: yellow;
+  padding: 20px;
+}
+
+.bottom4 {
+  background-color: blue;
+  padding: 20px;
+}
+
+.color5 {
+  grid-area: color5;
+  color: white;
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: repeat(1, 2fr);
+  grid-template-areas:
+  "top5"
+  "bottom5";
+}
+
+.top5 {
+  background-color: red;
+  padding: 20px;
+}
+
+.bottom5 {
+  background-color: orange;
+  padding: 20px;
+}
+
+.color6 {
+  grid-area: color6;
+  color: white;
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: repeat(1, 2fr);
+  grid-template-areas:
+  "top6"
+  "bottom6";
+}
+
+.top6 {
+  background-color: red;
+  padding: 20px;
+}
+
+.bottom6 {
+  background-color: green;
+  padding: 20px;
 }
 
 .left-container {
   background-color: antiquewhite;
-float: left;
-padding: 20px;
-box-sizing: border-box;
+  float: left;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .right-container {
-  background-color:paleturquoise;
-float: right;
-padding: 20px;
-box-sizing: border-box;
-}
-
-.right-top-container {
+  background-color: black;
   float: right;
   padding: 20px;
   box-sizing: border-box;
@@ -38,30 +173,31 @@ box-sizing: border-box;
 }
 
 h1 {
-font-size: 60px;
-text-align: center;
+  font-size: 60px;
+  text-align: center;
 }
 
 h2 {
-font-size: 40px;
-margin-left: 110px;
+  font-size: 40px;
+  margin-left: 110px;
 }
 
 h3 {
-font-size: 40px;
-margin-left: 20px;
+  font-size: 40px;
+  text-align: center;
+  color: #ebeef1;
 }
 
 button.apparel {
-margin-right: 10px;
-font-size: 16px;
-padding: 15px;
-background: #ebeef1;
-cursor: pointer;
-border: none;
-border-radius: 50px;
-box-shadow: 10px 10px 10px -1px rgba(10, 99, 169, 0.16),
-            5px 5px 5px -1px rgba(255, 255, 255, 0.7)
+  margin-right: 10px;
+  font-size: 16px;
+  padding: 15px;
+  background: #ebeef1;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 10px 10px 10px -1px rgba(10, 99, 169, 0.16),
+    5px 5px 5px -1px rgba(255, 255, 255, 0.7)
 }
 
 button.colorButton {
@@ -70,54 +206,53 @@ button.colorButton {
 }
 
 .list {
-padding: 1rem;
-width: 100%;
-height: 10rem;
-border: 0.1rem solid grey;
-overflow: auto;
+  padding: 1rem;
+  width: 100%;
+  height: 10rem;
+  border: 0.1rem solid grey;
+  overflow: auto;
 }
 
 .add-members-container input {
-border: none;
-border-bottom: 0.1rem solid rgba(128, 128, 128, 0.418);
-margin-right: 0.5rem;
-width: 100%;
-display: flex;
+  border: none;
+  border-bottom: 0.1rem solid rgba(128, 128, 128, 0.418);
+  margin-right: 0.5rem;
+  width: 100%;
+  display: flex;
 }
 
 .add-members-container button {
-width: 100%;
-border: none;
-color: white;
-font-weight: 400;
-cursor: pointer;
-background-color: rgb(0, 53, 139);
-margin-top: 0.5rem;
+  width: 100%;
+  border: none;
+  color: white;
+  font-weight: 400;
+  cursor: pointer;
+  background-color: rgb(0, 53, 139);
+  margin-top: 0.5rem;
 }
 
 .input-container {
-margin: 2rem 0;
-display: flex;
-height: 2rem;
+  margin: 2rem 0;
+  display: flex;
+  height: 2rem;
 }
 
 .input-container button {
-width: 50%;
-background-color: darkcyan;
-border: none;
-color: white;
+  width: 50%;
+  background-color: darkcyan;
+  border: none;
+  color: white;
 }
 
 .input-container input {
-width: 50%;
+  width: 50%;
 }
 
 .card {
-padding: 2rem;
-width: 100%;
+  padding: 2rem;
+  width: 100%;
 }
 
 .error-msg {
-color: red;
+  color: red;
 }
-
