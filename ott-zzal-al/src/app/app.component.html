@@ -1,123 +1,147 @@
-<div class="header">
-  <h1>Ott-Zzal-Al</h1>
-</div>
-<div class="grid-container">
-  <div class="left-container">
-    <div #tops>
-      <h2>TOPS:</h2>
-      <div class="apparel-buttons">
-        <button class="apparel" (click)="getTopColors('tshirts')">
-          T-Shirts
-        </button>
-        <button class="apparel" (click)="getTopColors('Hoodies')">
-          Hoodies
-        </button>
-        <button class="apparel" (click)="getTopColors('knitwear')">
-          Knitwear
-        </button>
+<div class="page-container">
+  <div class="header">
+    <h1>Ott-Zzal-Al</h1>
+  </div>
+  <div class="grid-container">
+    <div class="left-container">
+      <div #tops>
+        <h2>TOPS:</h2>
+        <div class="apparel-buttons">
+          <button class="apparel" (click)="getTopColors('tshirts')">
+            T-Shirts
+          </button>
+          <button class="apparel" (click)="getTopColors('Hoodies')">
+            Hoodies
+          </button>
+          <button class="apparel" (click)="getTopColors('knitwear')">
+            Knitwear
+          </button>
+        </div>
+        <div class="color-buttons" *ngIf="topColors.length !== 0">
+          <button
+            class="colorButton"
+            *ngFor="let color of topColors"
+            [ngStyle]="{ 'background-color': color }"
+            (click)="onChooseTopColor(color)"
+          >
+            {{ color }}
+          </button>
+        </div>
       </div>
-      <div class="color-buttons" *ngIf="topColors.length !== 0">
-        <button
-          class="colorButton"
-          *ngFor="let color of topColors"
-          [ngStyle]="{ 'background-color': color }"
-          (click)="onChooseTopColor(color)"
-        >
-          {{ color }}
-        </button>
+
+      <div #bottoms *ngIf="possibleBottomsAvailable">
+        <h2>BOTTOMS:</h2>
+        <div class="apparel-buttons">
+          <button
+            class="apparel"
+            *ngFor="let bottomType of possibleBottomTypes"
+            (click)="onChooseBottomType(bottomType)"
+          >
+            {{ bottomType }}
+          </button>
+        </div>
       </div>
     </div>
-
-    <div #bottoms *ngIf="possibleBottomsAvailable">
-      <h2>BOTTOMS:</h2>
-      <div class="apparel-buttons">
-        <button
-          class="apparel"
-          *ngFor="let bottomType of possibleBottomTypes"
-          (click)="onChooseBottomType(bottomType)"
-        >
-          {{ bottomType }}
-        </button>
+    <div class="right-container">
+      <h3>COLOR COMBINATIONS:</h3>
+      <h4 class="color-combo" *ngIf="bottomColorScheme.length !== 0">
+        {{ top }} + {{ chosenBottomType }}
+      </h4>
+      <div class = "start-message"
+        *ngIf="bottomColorScheme.length === 0"
+        [ngStyle]="{ color: '#ffffff' }"
+      >
+        pick a combo to get started
+      </div>
+      <div class="grid-container-right" *ngIf="bottomColorScheme.length !== 0">
+        <div class="color1">
+          <div
+            class="top1"
+            [ngStyle]="{ 'background-color': chosenTopColor }"
+          ></div>
+          <div
+            class="bottom1"
+            [ngStyle]="{ 'background-color': rand6BottomColorScheme[0] }"
+          ></div>
+        </div>
+        <div class="color2">
+          <div
+            class="top2"
+            [ngStyle]="{ 'background-color': chosenTopColor }"
+          ></div>
+          <div
+            class="bottom2"
+            [ngStyle]="{ 'background-color': rand6BottomColorScheme[1] }"
+          ></div>
+        </div>
+        <div class="color3">
+          <div
+            class="top3"
+            [ngStyle]="{ 'background-color': chosenTopColor }"
+          ></div>
+          <div
+            class="bottom3"
+            [ngStyle]="{ 'background-color': rand6BottomColorScheme[2] }"
+          ></div>
+        </div>
+        <div class="color4">
+          <div
+            class="top4"
+            [ngStyle]="{ 'background-color': chosenTopColor }"
+          ></div>
+          <div
+            class="bottom4"
+            [ngStyle]="{ 'background-color': rand6BottomColorScheme[3] }"
+          ></div>
+        </div>
+        <div class="color5">
+          <div
+            class="top5"
+            [ngStyle]="{ 'background-color': chosenTopColor }"
+          ></div>
+          <div
+            class="bottom5"
+            [ngStyle]="{ 'background-color': rand6BottomColorScheme[4] }"
+          ></div>
+        </div>
+        <div class="color6">
+          <div
+            class="top6"
+            [ngStyle]="{ 'background-color': chosenTopColor }"
+          ></div>
+          <div
+            class="bottom6"
+            [ngStyle]="{ 'background-color': rand6BottomColorScheme[5] }"
+          ></div>
+        </div>
+        <div class="regen">
+          <button class="regen-button" (click)="regenerateCombo()">
+            <b>Regenerate with different bottom combos</b>
+          </button>
+        </div>
       </div>
     </div>
   </div>
-  <div class="right-container">
-    <h3>COLOR COMBINATIONS:</h3>
-    <h4 class="color-combo" *ngIf="bottomColorScheme.length !== 0">
-      {{ top }}
-    </h4>
-    <div
-      *ngIf="bottomColorScheme.length === 0"
-      [ngStyle]="{ color: '#ffffff' }"
-    >
-      pick a combo to get started
-    </div>
-    <div class="grid-container-right" *ngIf="bottomColorScheme.length !== 0">
-      <div class="color1">
-        <div
-          class="top1"
-          [ngStyle]="{ 'background-color': chosenTopColor }"
-        ></div>
-        <div
-          class="bottom1"
-          [ngStyle]="{ 'background-color': rand6BottomColorScheme[0] }"
-        ></div>
-      </div>
-      <div class="color2">
-        <div
-          class="top2"
-          [ngStyle]="{ 'background-color': chosenTopColor }"
-        ></div>
-        <div
-          class="bottom2"
-          [ngStyle]="{ 'background-color': rand6BottomColorScheme[1] }"
-        ></div>
-      </div>
-      <div class="color3">
-        <div
-          class="top3"
-          [ngStyle]="{ 'background-color': chosenTopColor }"
-        ></div>
-        <div
-          class="bottom3"
-          [ngStyle]="{ 'background-color': rand6BottomColorScheme[2] }"
-        ></div>
-      </div>
-      <div class="color4">
-        <div
-          class="top4"
-          [ngStyle]="{ 'background-color': chosenTopColor }"
-        ></div>
-        <div
-          class="bottom4"
-          [ngStyle]="{ 'background-color': rand6BottomColorScheme[3] }"
-        ></div>
-      </div>
-      <div class="color5">
-        <div
-          class="top5"
-          [ngStyle]="{ 'background-color': chosenTopColor }"
-        ></div>
-        <div
-          class="bottom5"
-          [ngStyle]="{ 'background-color': rand6BottomColorScheme[4] }"
-        ></div>
-      </div>
-      <div class="color6">
-        <div
-          class="top6"
-          [ngStyle]="{ 'background-color': chosenTopColor }"
-        ></div>
-        <div
-          class="bottom6"
-          [ngStyle]="{ 'background-color': rand6BottomColorScheme[5] }"
-        ></div>
-      </div>
-      <div class="regen">
-        <button class="regen-button" (click)="regenerateCombo()">
-          Regenerate with different bottom combos
-        </button>
-      </div>
-    </div>
+  <div class="about-container">
+    <h2>About Ott-Zzal-Al</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ratione!
+      Veritatis cupiditate deserunt quasi repellat dignissimos suscipit
+      assumenda, labore architecto? Voluptate modi expedita explicabo.
+      Accusantium perspiciatis reprehenderit voluptatum enim quo delectus?
+      Recusandae, provident dolorum temporibus quam facilis nisi velit quos
+      necessitatibus quia pariatur aspernatur optio autem eum ea et quidem
+      aperiam illum suscipit quas nihil! Iste voluptate ipsum perferendis,
+      deleniti ad quibusdam. Veritatis impedit repudiandae quas animi
+      perferendis omnis quod, aperiam a magnam laborum tenetur architecto
+      recusandae fugiat soluta blanditiis ipsam, libero optio rem aspernatur!
+      Molestias sapiente harum amet voluptate nulla, voluptas consequuntur
+      minima eveniet ullam? Deserunt sint dolore vel aperiam nulla, eveniet
+      autem corrupti perspiciatis cumque eos a saepe repellat iusto? Porro,
+      error beatae nulla soluta, deleniti, quas maxime voluptate suscipit dicta
+      nostrum similique cumque nam in rerum praesentium facilis! Eius maiores
+      quam distinctio dolore consequatur eligendi sit. Corporis dolore eum ullam
+      quo magnam expedita impedit, dolorum nobis omnis!
+    </p>
   </div>
 </div>

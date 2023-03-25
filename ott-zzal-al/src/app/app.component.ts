@@ -1,6 +1,18 @@
 import { Component } from '@angular/core';
-import { Top, Bottom } from './services/clothes.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+
+export interface Top {
+  color: string;
+  jeans: string[];
+  joggers?: string[];
+  leggings?: string[];
+  shorts?: string[];
+}
+
+export interface Bottom {
+  color: string; 
+  tshirts: string[]; 
+}
 
 interface possibleBottoms {
   jeans: string[];
@@ -40,11 +52,9 @@ export class AppComponent {
       .valueChanges()
       .subscribe((res) => {
         if (res) {
-          this.topColors = res.map((elem) => {
-            console.log(elem)
+          this.topColors = res.map(elem => {
             return elem.color
           });
-          console.log('top colors: ', this.topColors);
         }
       });
   };
@@ -57,22 +67,17 @@ export class AppComponent {
       .subscribe((res) => {
         if (res) {
           this.bottomColors = res.map((elem) => elem.color);
-          console.log('bottom colors: ', this.bottomColors);
         }
       });
   };
 
   getTop = (top: string, color: string) => {
-    if (top === 'tshirts' && color === 'ffffff') {
-      color = 'white';
-    }
     this.db
       .doc<Top>(`${top}/${color}`)
       .valueChanges()
       .subscribe((res) => {
         if (res) {
           this.top = res;
-          console.log('t: ', this.top);
         }
       });
   };
@@ -84,20 +89,17 @@ export class AppComponent {
       .subscribe((res) => {
         if (res) {
           this.bottom = res;
-          console.log('b: ', this.top);
         }
       });
   };
 
   onChooseTopColor(color: string) {
     this.chosenTopColor = color;
-    // console.log(this.chosenTopColor);
     this.db
       .doc<Top>(`${this.top}/${this.chosenTopColor}`)
       .valueChanges()
       .subscribe((matchList) => {
         if (matchList) {
-          console.log(matchList);
           const {color, ...rest} = matchList;
           this.possibleBottoms = rest;
           this.possibleBottomTypes = Object.keys(this.possibleBottoms)
@@ -105,7 +107,6 @@ export class AppComponent {
         }
         // if bottom type already selected
         if (this.bottomButtonPressed) {
-          console.log("bottom already selected")
           this.possibleBottoms[this.chosenBottomType];
           this.bottomColorScheme = this.possibleBottoms[this.chosenBottomType];
           this.rand6BottomColorScheme = this.bottomColorScheme.slice(0, 6);
@@ -119,7 +120,6 @@ export class AppComponent {
     this.possibleBottoms[bottomType];
     this.bottomColorScheme = this.possibleBottoms[bottomType];
     this.rand6BottomColorScheme = this.bottomColorScheme.slice(0, 6);
-    console.log(this.rand6BottomColorScheme)
   }
 
   regenerateCombo = () => {
