@@ -318,5 +318,9 @@ button.colorButton {
 
 .about-container {
   background-color: ivory;
-  
+}
+
+.about-container p {
+  font-size: 1.5rem;
+  margin: 0 5rem 2rem;
 }
